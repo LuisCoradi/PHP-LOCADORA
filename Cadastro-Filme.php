@@ -15,7 +15,7 @@ include("Menu.php");
 ?>
 
 <h3>Cadastro de Filmes</h3>
-<form name="cadFilmes"action="gravar-filme.php"method="post">
+<form name="cadFilmes"action="Gravar-Filme.php"method="post">
 
     <p><label>Título</label>
              <input type="text" name="tituloFilme"></p>
