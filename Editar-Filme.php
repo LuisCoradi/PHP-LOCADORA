@@ -15,3 +15,27 @@ valorLocacao, tbFilmes.idCategoria,nomeCategoria from tbFilmes
  $idCategoria = $dados["idCategoria"];
  $nomeCategoria = $dados["nomeCategoria"];
  ?>
+ <!doctype html>
+ <html>
+     <head><meta charset="utf-8">
+     <title>Gerencia Registro </title>
+     </head>
+     <body>
+         <h1>Locadora IFPR</h1>
+<?php
+include("Menu.php");
+?>
+<form name="form1" action="Atualizar-Filme.php?" method="post">
+     <input type="hidden" name="idFilme" value="<?php echo $idFilme;?>">
+     <p>
+     <label>Titulo:</label>
+     <input type="text" name="tituloFilme" value="<?php echo $tituloFilme; ?>">
+     </p>
+     <p>
+     <label>Duração:</label>
+     <input type="text" name="duracaoFilme" value="<?php echo $duracaoFilme; ?>">
+     </p>
+     <p>
+     <label>Valor:</label>
+     <input type="text" name="valorLocacao" value="<?php echo $valorLocacao;?>">
+    </p>
