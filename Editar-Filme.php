@@ -1,14 +1,14 @@
 <?php
 include("conexao.php");
 $idFilme = $_GET['idFilme'];
-$sqlRegistros = mysqli_query($conexao."select tituloFilme,
+$sqlRegistros = mysqli_query($conexao,"select tituloFilme,
 duracaoFilme,
 valorLocacao, tbFilmes.idCategoria,nomeCategoria from tbFilmes
  inner join tbCategorias 
  on tbFilmes.idCategoria = tbCategorias.idCategoria where 
  idFilme=$idFilme") or die ("Erro
  na exclusão da consulta" . mysqli_error($conexao));
- $dadaos = mysqli_fetch_array($sqlRegistros);
+ $dados = mysqli_fetch_array($sqlRegistros);
  $tituloFilme = $dados["tituloFilme"];
  $duracaoFilme = $dados["duracaoFilme"];
  $valorLocacao = $dados["valorLocacao"];
@@ -39,3 +39,24 @@ include("Menu.php");
      <label>Valor:</label>
      <input type="text" name="valorLocacao" value="<?php echo $valorLocacao;?>">
     </p>
+    <p>
+    <label>Categoria</label>    
+    <select name="idCategoria">
+    <option value='<?php echo $idCategoria;?>'><?php echo $nomeCategoria;?></option>
+    <?php
+    $rsCategoria = mysqli_query($conexao,"select * from tbCategorias");
+    $linhas = mysqli_num_rows($rsCategoria);
+    for($i=0;$i<$linhas;$i++){
+        $dados = mysqli_fetch_array($rsCategoria);
+        $idCategoria = $dados["idCategoria"];
+        $nomeCategoria = $dados["nomeCategoria"];
+        echo "<option value = '$idCategoria'>$nomeCategoria</option>";
+    }   
+    ?>
+    </select>
+    </p>
+    <p><input type="submit" name="opcao" value="Atualizar">
+    </p>
+</form>
+</body>
+</html>
